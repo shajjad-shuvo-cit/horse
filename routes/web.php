@@ -2,21 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FrontendController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('about',function(){
-  $headline = "this is our heading";
-  $para = "this is our paragraph with lots of para";
-  return view('about',compact('headline','para'));
-});
-
-Route::get('media-center',function(){
-  $tv_channels = ['btv','gtv','etv','atn','71','ch-i'];
-  return view('media',compact('tv_channels'));
-});
+Route::get('/',[FrontendController::class,'index'])->name('welcome');
+Route::get('/about-us',[FrontendController::class,'aboutview'])->name('about');
+Route::get('/media-center-for',[FrontendController::class,'mediaview'])->name('media');
+Route::get('/contact-us',[FrontendController::class,'contactview'])->name('contact');
 
 
 
