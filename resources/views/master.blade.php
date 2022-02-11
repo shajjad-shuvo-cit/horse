@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
 </head>
@@ -22,9 +23,17 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('about') }}">about</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('media') }}">media</a>
-        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              media
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ route('media') }}">view channels</a></li>
+              <li><a class="dropdown-item" href="{{ route('media-add') }}">add channels</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('contact') }}">contact</a>
         </li>
@@ -38,7 +47,7 @@
   @yield('content')
 
 
-<footer class="bg-dark text-white py-2">
+<footer class="bg-dark text-white py-2 position-fixed start-0 bottom-0 w-100 text-center">
     horse &copy; {{ Carbon\Carbon::now()->format('Y') }} . All rights are reserved
 </footer>
 <!-- footer part -->
